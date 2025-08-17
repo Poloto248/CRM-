@@ -5,6 +5,12 @@ export interface Tag {
   color: string;
 }
 
+export interface CallLog {
+  id: string;
+  timestamp: number;
+  notes: string;
+}
+
 export interface Customer {
   id: string;
   phone: string;
@@ -12,9 +18,9 @@ export interface Customer {
   shopName: string;
   shopType: string;
   city: string;
-  notes?: string;
   reminder?: number; // timestamp
   tags: Tag[];
+  callHistory: CallLog[];
 }
 
 export interface Column {

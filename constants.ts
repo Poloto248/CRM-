@@ -1,3 +1,4 @@
+
 import { BoardData } from './types';
 
 export const COLUMN_IDS = {
@@ -45,6 +46,30 @@ export const INITIAL_BOARD_DATA: BoardData = {
     COLUMN_IDS.CUSTOMER,
   ],
 };
+
+export const COLUMN_COLORS: { [key: string]: { bg: string; header: string } } = {
+  [COLUMN_IDS.NUMBERS_LIST]: {
+    bg: 'bg-slate-200 dark:bg-slate-800/50',
+    header: 'bg-slate-200 dark:bg-slate-800/50',
+  },
+  [COLUMN_IDS.CONTACT_FAILED]: {
+    bg: 'bg-red-100 dark:bg-red-900/20',
+    header: 'bg-red-100 dark:bg-red-900/20',
+  },
+  [COLUMN_IDS.NEEDS_ACTION]: {
+    bg: 'bg-amber-100 dark:bg-amber-900/20',
+    header: 'bg-amber-100 dark:bg-amber-900/20',
+  },
+  [COLUMN_IDS.NEEDS_FOLLOW_UP]: {
+    bg: 'bg-indigo-100 dark:bg-indigo-900/20',
+    header: 'bg-indigo-100 dark:bg-indigo-900/20',
+  },
+  [COLUMN_IDS.CUSTOMER]: {
+    bg: 'bg-green-100 dark:bg-green-900/20',
+    header: 'bg-green-100 dark:bg-green-900/20',
+  },
+};
+
 
 export const WHATSAPP_MESSAGES = [
   "سلام، وقت بخیر. از خیاطی مگزاز تماس میگیرم.",

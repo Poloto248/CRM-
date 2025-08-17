@@ -1,19 +1,20 @@
 
 import React from 'react';
 import { Customer } from '../types';
-import { EditIcon, WhatsAppIcon, NoteIcon, ClockIcon, TagIcon } from './icons';
+import { EditIcon, WhatsAppIcon, NoteIcon, ClockIcon, TagIcon, CallIcon } from './icons';
 
 interface KanbanCardProps {
   card: Customer;
   onDragStart: (e: React.DragEvent<HTMLDivElement>, cardId: string) => void;
   onEdit: (card: Customer) => void;
-  onAddNote: (card: Customer) => void;
+  onViewHistory: (card: Customer) => void;
   onSetReminder: (card: Customer) => void;
   onSendWhatsApp: (card: Customer) => void;
   onEditTags: (card: Customer) => void;
+  onCall: (card: Customer) => void;
 }
 
-const KanbanCard: React.FC<KanbanCardProps> = ({ card, onDragStart, onEdit, onAddNote, onSetReminder, onSendWhatsApp, onEditTags }) => {
+const KanbanCard: React.FC<KanbanCardProps> = ({ card, onDragStart, onEdit, onViewHistory, onSetReminder, onSendWhatsApp, onEditTags, onCall }) => {
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     onDragStart(e, card.id);
   };
@@ -61,7 +62,15 @@ const KanbanCard: React.FC<KanbanCardProps> = ({ card, onDragStart, onEdit, onAd
       <div className="flex items-center justify-between text-gray-500">
          <div className="flex items-center gap-2">
             <button onClick={() => onEdit(card)} title="ویرایش" className="hover:text-blue-500"><EditIcon /></button>
-            <button onClick={() => onAddNote(card)} title="یادداشت" className="hover:text-yellow-500"><NoteIcon /></button>
+            <button onClick={() => onCall(card)} title="ثبت تماس" className="hover:text-sky-500"><CallIcon /></button>
+            <button onClick={() => onViewHistory(card)} title="تاریخچه و یادداشت‌ها" className="relative hover:text-yellow-500">
+              <NoteIcon />
+              {card.callHistory?.length > 0 && (
+                <span className="absolute -top-1 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-white">
+                  {card.callHistory.length}
+                </span>
+              )}
+            </button>
             <button onClick={() => onSetReminder(card)} title="یادآوری" className="hover:text-purple-500"><ClockIcon /></button>
             <button onClick={() => onEditTags(card)} title="برچسب" className="hover:text-green-500"><TagIcon /></button>
          </div>

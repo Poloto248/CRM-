@@ -1,5 +1,5 @@
 {
-  "name": "Maghraz CRM",
+  "name": "نرم افزار ارتباط با مشتری مگراز",
   "description": "A Trello-style CRM board for managing customer contacts, follow-ups, and interactions, specifically designed for tailors. Features include drag-and-drop, WhatsApp integration, and reminders.",
   "requestFramePermissions": []
 }
